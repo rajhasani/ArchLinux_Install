@@ -118,6 +118,6 @@ Finally, we will format the root partition to EXT4:
 We will now be installing the Linux kernel. First, we must mount our root partition to a mount point, and then run the kernel install: 
 
 **`root@archiso ~ # mount /dev/sda3 /mnt`**  
-**`root@archiso ~ # pacstrap /mnt base linux linux-firmware vim
+**`root@archiso ~ # pacstrap /mnt base linux linux-firmware vim`**
 
 This part will take some time. I also threw Vim in there, so I can have a functional text editor up and running once the install is complete. 
