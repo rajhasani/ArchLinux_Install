@@ -120,4 +120,19 @@ We will now be installing the Linux kernel. First, we must mount our root partit
 **`root@archiso ~ # mount /dev/sda3 /mnt`**  
 **`root@archiso ~ # pacstrap /mnt base linux linux-firmware vim`**
 
-This part will take some time. I also threw Vim in there, so I can have a functional text editor up and running once the install is complete. 
+This part may take some time. I also threw Vim in there, so I can have a functional text editor up and running once the install is complete. 
+
+
+### Troubleshooting
+
+There are a number of reasons pacstrap can fail. Some useful tips:
+
+* Ensure that you set your system time correctly. As a refresher, **`root@archiso ~ # timedatectl set-ntp true`**  
+* Update your mirrors to ensure you are downloading the most accurate, up-to-date packages: **`root@archiso ~ # reflector --verbose --latest 10 --country "United States" --protocol https --sort rate --save /etc/pacman.d/mirrorlist`**  
+* Packages are signed with PGP keys to ensure authenticity, and those keys may be out of date. Run the following:  
+  * **`root@archiso ~ # dirmngr </dev/null`**  
+  * **`root@archiso ~ # pacman-key --populate archlinux`**  
+  * **`root@archiso ~ # pacman-key --refresh-keys`**  
+
+
+### Step 5 - Configure installation
