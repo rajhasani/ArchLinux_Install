@@ -136,3 +136,74 @@ There are a number of reasons pacstrap can fail. Some useful tips:
 
 
 ### Step 5 - Configure installation
+
+Your installation currently resides at the mount point. Navigate to that:
+
+**`root@archiso ~ # arch-chroot /mnt`**  
+
+Next, we want to configure the timezone, sync the hardware clock, and set the locale on the installation.
+
+**`[root@archiso /]# timedatectl list-timezones`**  
+**`[root@archiso /]# timedatectl set-timezone <TIMEZONE>`**  
+**`[root@archiso /]# hwclock --systohc`**  
+**`[root@archiso /]# vim /etc/locale.gen`**  
+
+Remove the "#" in front of "en_US.UTF-8 UTF-8"
+
+**`[root@archiso /]# locale-gen`**  
+**`[root@archiso /]# echo LANG=en_US.UTF-8 > /etc/locale.conf`**  
+**`[root@archiso /]# export LANG=en_US.UTF-8`**  
+
+Now let's name our host:
+
+**`[root@archiso /]# vim /etc/hostname`**  
+
+Insert the hostname into the text file; I used "arch" for this example. Next, we'll create a hosts file:
+
+**`[root@archiso /]# vim /etc/hosts`**  
+
+Add the following lines to the end of the file (I used my hostname in the third line, replace "arch" with your specified hostname from earlier):
+* 127.0.0.1      localhost
+* ::1      localhost
+* 127.0.1.1      arch.localdomain arch
+
+Next, we'll set the root password, and create a primary user (I'll use "raj" as my username):
+
+**`[root@archiso /]# passwd`**  
+**`[root@archiso /]# useradd -g users -G power,storage,wheel -m raj`**  
+**`[root@archiso /]# passwd raj`**  
+
+Next, we'll install our bootloader, which will be GRUB in this instance:
+
+**`[root@archiso /]# pacman -S grub efibootmgr`**  
+**`[root@archiso /]# mkdir /boot/efi`**  
+
+Mount the EFI filesystem from earlier to /boot/:
+
+**`[root@archiso /]# mount /dev/sda1 /boot/efi`**  
+
+Set up GRUB: 
+
+**`[root@archiso /]# grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi`**  
+**`[root@archiso /]# grub-mkconfig -o /boot/grub/grub.cfg`**  
+
+Now let's install/enable our network drivers and other goodies:
+
+**`[root@archiso /]# pacman -S networkmanager network-manager-applet dialog wpa_supplicant base-devel linux-headers`**  
+**`[root@archiso /]# systemctl enable NetworkManager`**  
+
+Finally, let's set up our desktop environment:
+
+**`[root@archiso /]# pacman -S xorg`**  
+**`[root@archiso /]# pacman -S sddm`**  
+**`[root@archiso /]# systemctl enable sddm`**  
+**`[root@archiso /]# pacman -S plasma konsole dolphin screenfetch`**  
+
+In this next step, remove the hashes before "%wheel ALL=(ALL) ALL"
+
+**`[root@archiso /]# EDITOR=vim visudo`**  
+
+The base installation is complete. Exit and reboot:
+
+**`[root@archiso /]# exit`**  
+**`root@archiso ~ # shutdown now`**  
