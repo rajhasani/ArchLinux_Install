@@ -203,7 +203,8 @@ In this next step, remove the hashes before "%wheel ALL=(ALL) ALL"
 
 **`[root@archiso /]# EDITOR=vim visudo`**  
 
-The base installation is complete. Exit and reboot:
+The base installation is complete. Exit, unmount, and reboot:
 
 **`[root@archiso /]# exit`**  
+**`root@archiso ~ # umount -a`**  
 **`root@archiso ~ # shutdown now`**  
