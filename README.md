@@ -143,7 +143,7 @@ There are a number of reasons pacstrap can fail. Some useful tips:
   * **`root@archiso ~ # pacman-key --refresh-keys`**  
 
 
-### Step 5 - Configure installation
+## Step 5 - Configure installation
 
 Your installation currently resides at the mount point. Navigate to that:
 
