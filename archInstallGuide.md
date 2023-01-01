@@ -177,6 +177,7 @@ Next, we'll install our bootloader, which will be GRUB in this instance:
 
 **`[root@archiso /]# pacman -S grub efibootmgr`**  
 **`[root@archiso /]# mkdir /boot/efi`**  
+**`[root@archiso /]# genfstab -U /mnt >> /mnt/etc/fstab`**
 
 Mount the EFI filesystem from earlier to /boot/:
 
