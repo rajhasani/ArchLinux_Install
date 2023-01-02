@@ -185,7 +185,6 @@ Next, we'll install our bootloader, which will be GRUB in this instance:
 
 **`[root@archiso /]# pacman -S grub efibootmgr`**  
 **`[root@archiso /]# mkdir /boot/efi`**  
-**`[root@archiso /]# genfstab -U /mnt >> /mnt/etc/fstab`**
 
 Mount the EFI filesystem from earlier to /boot/:
 
@@ -195,6 +194,7 @@ Set up GRUB:
 
 **`[root@archiso /]# grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi`**  
 **`[root@archiso /]# grub-mkconfig -o /boot/grub/grub.cfg`**  
+**`[root@archiso /]# genfstab -U /mnt >> /mnt/etc/fstab`**  
 
 Now let's install/enable our network drivers and other goodies:
 
