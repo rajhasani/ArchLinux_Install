@@ -4,7 +4,7 @@ When utilized correctly, Arch is a fairly minimal-bloat install, meaning that re
 
 On the subject, the Arch Linux Wiki is one of the most comprehensive repos for documentation, best practices, and relevant troubleshooting as a whole, let alone for (Arch) Linux. The contributors spend countless hours to ensure the information is up-to-date and complete. You can visit it at https://wiki.archlinux.org/
 
-Proceeding with this guide, I will assume you already have a LiveUSB set up with the Arch Linux installation ISO. If not, this can easily be set up using a tool like UNetbootin.
+Proceeding with this guide, I will assume you already have a LiveUSB set up with the Arch Linux installation ISO. If not, this can easily be set up using a tool like Rufus.
 
 You should see a blank terminal on the screen.
 
