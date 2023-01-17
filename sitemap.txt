@@ -1,2 +1,3 @@
 https://github.com/rajhasani/
 https://github.com/rajhasani/ArchLinux_Install
+https://rajhasani.github.io/ArchLinux_Install/
